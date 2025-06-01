@@ -5,7 +5,12 @@ public static class TelemetryBuffer
     public static byte[] ToBuffer(long reading)
     {
         byte[] buffer = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-        
+
+        // Couple of problems
+        // 1. Our supposedly hyper optimized routine is always sending 9 bytes. You could have made it shorter by just sending longs without the header bit.
+        // 2. Converting from the buffer back to a long is using things like BitConverter.ToUInt16 for shorts. However, the length of a short may differ over time or system. So this only works as long as UInt16 == UShort which is not guaranteed.
+        // 3. Tests mark you wrong if you don't follow their exact pattern. However, I think my first draft was returning valid data just not exactly the type desired. I was opting for unsigned values for positive numbers at first. The tests should test it works instead of works the way I wrote it. UShort and Short can both hold 5 and neither is a wrong answer.
+
         if (reading > uint.MaxValue && reading <= long.MaxValue)
         {
             buffer[0] = 256 - sizeof(long);
