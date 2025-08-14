@@ -1,7 +1,17 @@
+using System.Data;
+using System.Globalization;
+using System.Security.Cryptography;
+using System.Text.Encodings.Web;
+
+using Newtonsoft.Json.Linq;
+
+using Xunit.Internal;
+
 public static class ParallelLetterFrequency
 {
     public static Dictionary<char, int> Calculate(IEnumerable<string> texts)
     {
+        /*
         object lockObj = new object();
         Dictionary<char, int> ret = new();
 
@@ -24,6 +34,14 @@ public static class ParallelLetterFrequency
             }
         });
 
-        return ret;
+        */
+        
+        // It looks like I am supposed to do this instead from community solutions.
+        // Is Parallel.ForEach not good enough?
+        return texts.AsParallel()
+        .SelectMany(ch => ch.ToLowerInvariant())
+        .Where(c => Char.IsLetter(c))
+        .GroupBy(c => c)
+        .ToDictionary(c => c.Key, c => c.Count());               
     }
 }
