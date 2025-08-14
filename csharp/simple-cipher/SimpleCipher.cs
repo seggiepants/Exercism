@@ -85,7 +85,6 @@ public class SimpleCipher
     /// <returns>The decoded text</returns>
     public string Decode(string ciphertext)
     {
-        const int ALPHABET_LEN = (int)'z' - (int)'a' + 1;
         StringBuilder sb = new();
         for (int i = 0; i < ciphertext.Length; i++)
         {
