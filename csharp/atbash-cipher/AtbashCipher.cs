@@ -13,8 +13,8 @@ public static class AtbashCipher
 
     public static string Decode(string encodedValue)
     {
-        return new String((from char c in encodedValue.Replace(" ", "")
+        return new String((from char c in encodedValue.ToLowerInvariant().Replace(" ", "")
                  where transposed.Contains(c)
-                 select reference[transposed.IndexOf(c)]).ToArray<char>()).ToLowerInvariant();
+                 select reference[transposed.IndexOf(c)]).ToArray<char>());
     }
 }
