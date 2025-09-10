@@ -1,3 +1,12 @@
+.vs
+bin
+obj
+*.md
+*.csproj
+*.sln
+packages.lock.json
+.editorconfig
+*Tests.cs
 .exercism
 build
 .gradle
@@ -7,3 +16,12 @@ build
 __pycache__
 *.pyc
 exercism.exe
+zig/hello-world/main.zig
+csharp/annalyns-infiltration/Program.cs
+csharp/calculator-conundrum/SimpleOperation.cs
+csharp/cars-assemble/Program.cs
+csharp/football-match-reports/OffFieldActivitiesAndCharacters.cs
+csharp/hello-world/Program.cs
+csharp/log-levels/Program.cs
+csharp/lucians-luscious-lasagna/Program.cs
+csharp/object-relational-mapping/Database.cs
