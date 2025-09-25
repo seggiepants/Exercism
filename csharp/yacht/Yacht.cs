@@ -49,7 +49,6 @@ public static class YachtGame
             default:
                 return 0;
         }
-        throw new NotImplementedException("You need to implement this method.");
     }
 
     static bool IsFullHouse(Dictionary<int, int> dice)
