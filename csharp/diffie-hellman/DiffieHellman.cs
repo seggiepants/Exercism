@@ -12,7 +12,6 @@ public static class DiffieHellman
             for(int i = 0; i < nBytes;i++)
             {
                 r.NextBytes(randBytes);
-                randBytes[0] = (byte)(0x7F & randBytes[0]); // try to make it unsigned.
                 BigInteger privateKey = new(randBytes);
                 if ((BigInteger.Compare(privateKey, BigInteger.Zero) > 0) &&
                     (BigInteger.Compare(privateKey, primeP) < 0))
