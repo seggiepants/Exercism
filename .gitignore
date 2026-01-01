@@ -25,3 +25,12 @@ csharp/hello-world/Program.cs
 csharp/log-levels/Program.cs
 csharp/lucians-luscious-lasagna/Program.cs
 csharp/object-relational-mapping/Database.cs
+LICENSE
+babel.config.js
+eslint.config.mjs
+*.spec.js
+jest.config.js
+node_modules
+package.json
+pnpm-lock.yaml
+.npmrc
