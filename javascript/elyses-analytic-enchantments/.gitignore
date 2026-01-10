@@ -3,5 +3,3 @@
 /bin/configlet.exe
 /package-lock.json
 /yarn.lock
-grocer.js
-notifier.js
