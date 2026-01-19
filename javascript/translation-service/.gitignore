@@ -3,3 +3,5 @@
 /bin/configlet.exe
 /package-lock.json
 /yarn.lock
+api.js
+errors.js
