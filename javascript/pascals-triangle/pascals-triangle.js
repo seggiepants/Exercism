@@ -19,3 +19,19 @@ export const rows = (count) => {
 
   return ret
 };
+
+const sierpenski = (count) => {
+  let lines = rows(count)
+  let tiles = ['░', '█']
+  let maxWidth = lines[lines.length - 1].length
+  let output = "";
+  for(let line of lines)
+  {
+    let padding = Math.floor((maxWidth - line.length) / 2)
+    output += ' '.repeat(padding) +  line.map((num) => tiles[num % 2]).join('') + '\n'
+  }
+  console.log(output)
+
+}
+
+sierpenski(40)
