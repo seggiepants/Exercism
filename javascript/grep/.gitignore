@@ -1,0 +1,6 @@
+/node_modules
+/bin/configlet
+/bin/configlet.exe
+/package-lock.json
+/yarn.lock
+/data
