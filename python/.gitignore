@@ -1,2 +1,4 @@
 H*.md
 pycache
+*test*.py
+
