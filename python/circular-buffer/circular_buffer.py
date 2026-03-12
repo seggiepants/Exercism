@@ -1,13 +1,18 @@
-class BufferFullException(Exception):
+"""Circular Buffer Exercise."""
+
+class BufferFullException(BufferError):
     """Named exception for Buffer Full condition."""
-    pass
+    def __init__(self, message):
+        self.message = message
 
-class BufferEmptyException(Exception):
+class BufferEmptyException(BufferError):
     """Named exception for Buffer Empty condition."""
-    pass
+    def __init__(self, message):
+        self.message = message
 
 
-class CircularBuffer(object):
+class CircularBuffer:
+    """Circular Buffer"""
     def __init__(self, capacity):
         """Initalize a buffer to the given capacity and 
         set it to the clear state.
@@ -17,7 +22,7 @@ class CircularBuffer(object):
         """
         if capacity < 0 or capacity % 1 != 0:
             raise ValueError('Capactiy must be an integer value greater than zero.')
-            
+        self.index = 0            
         self.capacity = capacity
         self.buffer = [None] * self.capacity
         self.clear()
@@ -32,7 +37,7 @@ class CircularBuffer(object):
           any data.
         """
         if self.item_count <= 0:
-            raise BufferEmptyException('Cannot read from empty buffer')
+            raise BufferEmptyException('Circular buffer is empty')
         
         result = self.buffer[(self.index - self.item_count) % self.capacity]
         self.item_count -= 1
@@ -47,7 +52,7 @@ class CircularBuffer(object):
           to the buffer.
         """
         if self.item_count >= self.capacity:
-            raise BufferFullException('Cannot write to full buffer, did you mean overwrite?')
+            raise BufferFullException('Circular buffer is full')
         
         self.buffer[self.index] = data
         self.item_count += 1
