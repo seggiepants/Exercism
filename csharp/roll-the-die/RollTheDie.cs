@@ -10,7 +10,7 @@ public class Player
     }
     public int RollDie()
     {
-        return r.Next(1, 18);
+        return r.Next(1, 19);
     }
 
     public double GenerateSpellStrength()
