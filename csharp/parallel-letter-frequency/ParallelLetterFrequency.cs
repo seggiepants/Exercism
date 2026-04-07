@@ -1,15 +1,8 @@
 using System.Data;
-using System.Globalization;
-using System.Security.Cryptography;
-using System.Text.Encodings.Web;
-
-using Newtonsoft.Json.Linq;
-
-using Xunit.Internal;
 
 public static class ParallelLetterFrequency
 {
-    public static Dictionary<char, int> Calculate(IEnumerable<string> texts)
+    public static async Task<Dictionary<char, int>> Calculate(IEnumerable<string> texts)
     {
         /*
         object lockObj = new object();

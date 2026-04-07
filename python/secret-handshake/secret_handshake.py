@@ -16,10 +16,11 @@ def commands(number):
     """
     # If the number has the correct bit set, add the matching action to
     # the result set. It is important we go in a sorted order.
-    results = [codes[key] for key in sorted(codes.keys()) if key & number]
+    num = int(number, 2)
+    results = [codes[key] for key in sorted(codes.keys()) if int(key) & num]
     
     # If the 0b10000 (16) bit is set reverse the list
-    if 0b10000 & number:
+    if 0b10000 & num:
         results.reverse()
     
     # Return the resulting list

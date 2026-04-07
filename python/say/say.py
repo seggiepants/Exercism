@@ -58,7 +58,7 @@ text_to_speech_cmd = r'c:\\\"program files\eSpeak NG"\espeak-ng'
 def say(number):
     """
     Return a english text spoken version of the input number.
-    Parameters:
+    Parameters: 
     * number - The number to build a string for.
     Returns:
     * US english string version of the given number as a spoken word phrase.
@@ -66,6 +66,8 @@ def say(number):
     * Only handles integer numbers between 0 and 999,999,999,999
     * Does not handle negative numbers or floating point numbers.
     """
+    if number < 0 or number > 999_999_999_999:
+        raise ValueError('input out of range')
     result = ''
     group_index = 0
 
@@ -162,7 +164,7 @@ def say_helper(hundred, ten, one, return_zero):
         result += ones[hundred] + ' hundred'
         # only add and if we have more to append.
         if ten != 0 or one != 0:
-            result += ' and '
+            result += ' '
     
     if num_digits >= 2:
         # skip if we have nothing in the tens place.

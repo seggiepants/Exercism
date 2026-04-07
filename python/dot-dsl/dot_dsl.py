@@ -65,30 +65,33 @@ class Graph(object):
         self.nodes = []
         self.edges = []
         self.attrs = {}
+
         if data != None:
+            if type(data) is not list:
+                raise TypeError('Graph data malformed')        
             # Create the correct object for each item in the list.
             for row in data:
                 if type(row) != tuple:
                     raise TypeError('Invalid row')
                 elif len(row) <= 1:
-                    raise TypeError('Incomplete row detected')
+                    raise TypeError('Graph item incomplete')
                 else:
                     data_type = row[0]
                     if data_type == NODE:
                         # 0 = data_type, 1 = name, 2 = attributes
                         if len(row) != 3:
-                            raise ValueError('Incorrect number of parameters')
+                            raise ValueError('Node is malformed')
                         name = row[1]
                         attrs = row[2]
                         if attrs == None:
                             attrs = {}
                         elif type(attrs) != dict:
-                            raise ValueError('Incorrect data type for attributes')
+                            raise ValueError('Node is malformed')
                         self.nodes.append(Node(name, attrs))
                     elif data_type == EDGE:
                         # 0 = data_type, 1 = source, 2 = destination, 3 = attributes
                         if len(row) != 4:
-                            raise ValueError('Incorrect number of parameters')
+                            raise ValueError('Edge is malformed')
                         src = row[1]
                         dest = row[2]
                         attrs = row[3]
@@ -100,8 +103,8 @@ class Graph(object):
                     elif data_type == ATTR:
                         # 0 = data_type, 1 = key, 2 = value
                         if len(row) != 3:
-                            raise ValueError('Incorrect number of parameters')
+                            raise ValueError('Attribute is malformed')
 
                         self.attrs[row[1]] = row[2]
                     else:
-                        raise ValueError('Unexpected data type.')
+                        raise ValueError('Unknown item')

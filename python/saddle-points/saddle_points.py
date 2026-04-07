@@ -12,7 +12,7 @@ def saddle_points(matrix):
 
     # Sanity Check
     if any(len(row) != len(matrix[0]) for row in matrix):
-        raise ValueError('Irregular matrix detected.')
+        raise ValueError('irregular matrix')
     
     results = []
 
@@ -34,7 +34,7 @@ def saddle_points(matrix):
     
     # Add an empty dictionary for when we have no results, just to
     # appease the test cases.
-    if len(results) == 0:
-        results.append(dict())
+    #if len(results) == 0:
+    #    results.append(dict())
     
     return results

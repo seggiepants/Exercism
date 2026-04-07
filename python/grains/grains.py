@@ -1,3 +1,8 @@
+"""
+Calculate the grains of rice for a square on the chessboard which doubles for each square.
+Also calcuates the total of squares up to a given number.
+"""
+
 def square(number):
     """Return the number of grains on the given square of a chessboard
     (see problem description).
@@ -10,11 +15,11 @@ def square(number):
     * Will raise a ValueError if number is not between 1 and 64
     """
     if number < 1 or number > 64:
-        raise ValueError(f'Number ({number}) is out of range. 1 - 64 allowed.')
+        raise ValueError('square must be between 1 and 64')
     return 2**(number - 1)
 
 
-def total(number):
+def total(number = 64):
     """Return the total number of grains on the chessboard (see problem description).
     For squares 1 to the given number.
     Parameters:
@@ -27,4 +32,4 @@ def total(number):
     if number < 1 or number > 64:
         raise ValueError(f'Number ({number}) is out of range. 1 - 64 allowed.')
     
-    return sum([square(i) for i in range(1, number + 1)])
+    return sum(square(position) for position in range(1, number + 1))

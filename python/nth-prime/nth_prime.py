@@ -8,7 +8,10 @@ def prime(number):
     * Prime number for the given index.
     """
     # check for sanity
-    if number <= 0 or number % 1 != 0:
+    if number == 0:
+        raise ValueError('there is no zeroth prime')
+    
+    if number % 1 != 0:
         raise ValueError('number must be a postive integer >= 1.')
     
     primes = [] # holds prime numbers found so far.

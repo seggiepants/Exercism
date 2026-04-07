@@ -53,3 +53,4 @@ enum TravelMethod
     Walking,
     Horseback
 }
+
