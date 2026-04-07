@@ -15,7 +15,7 @@ class Phrase
 
     def word_count
         ret = {}
-        words = @data.split(/[^a-zA-Z0-9']+/, -1)
+        words = @data.scan(/(?!')[A-Za-z0-9']*(?<!')/)
         for word in words
             key = filter_word(word)
             if key.length > 0

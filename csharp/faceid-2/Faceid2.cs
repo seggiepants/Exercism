@@ -92,3 +92,4 @@ public class Authenticator
         return Object.ReferenceEquals(identityA, identityB);
     }
 }
+

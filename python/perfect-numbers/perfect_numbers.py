@@ -31,7 +31,7 @@ def aliquot_sum(number):
     """
     # Raise a value error for floating point or dissallowed integer values.
     if number < 1 or number % 1 != 0:
-        raise ValueError('Number must be an integer greater than zero.')
+        raise ValueError('Classification is only possible for positive integers.')
     
     # only go half way up to save some time as we can't have a factor larger than
     # number > 2

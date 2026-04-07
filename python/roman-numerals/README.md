@@ -1,92 +1,99 @@
 # Roman Numerals
 
-Write a function to convert from normal numbers to Roman Numerals.
+Welcome to Roman Numerals on Exercism's Python Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
 
-The Romans were a clever bunch. They conquered most of Europe and ruled
-it for hundreds of years. They invented concrete and straight roads and
-even bikinis. One thing they never discovered though was the number
-zero. This made writing and dating extensive histories of their exploits
-slightly more challenging, but the system of numbers they came up with
-is still in use today. For example the BBC uses Roman numerals to date
-their programmes.
+## Introduction
 
-The Romans wrote numbers using letters - I, V, X, L, C, D, M. (notice
-these letters have lots of straight lines and are hence easy to hack
-into stone tablets).
+Today, most people in the world use Arabic numerals (0–9).
+But if you travelled back two thousand years, you'd find that most Europeans were using Roman numerals instead.
+
+To write a Roman numeral we use the following Latin letters, each of which has a value:
+
+| M    | D   | C   | L   | X   | V   | I   |
+| ---- | --- | --- | --- | --- | --- | --- |
+| 1000 | 500 | 100 | 50  | 10  | 5   | 1   |
+
+A Roman numeral is a sequence of these letters, and its value is the sum of the letters' values.
+For example, `XVIII` has the value 18 (`10 + 5 + 1 + 1 + 1 = 18`).
+
+There's one rule that makes things trickier though, and that's that **the same letter cannot be used more than three times in succession**.
+That means that we can't express numbers such as 4 with the seemingly natural `IIII`.
+Instead, for those numbers, we use a subtraction method between two letters.
+So we think of `4` not as `1 + 1 + 1 + 1` but instead as `5 - 1`.
+And slightly confusingly to our modern thinking, we write the smaller number first.
+This applies only in the following cases: 4 (`IV`), 9 (`IX`), 40 (`XL`), 90 (`XC`), 400 (`CD`) and 900 (`CM`).
+
+Order matters in Roman numerals!
+Letters (and the special compounds above) must be ordered by decreasing value from left to right.
+
+Here are some examples:
 
 ```text
- 1  => I
-10  => X
- 7  => VII
+ 105 => CV
+---- => --
+ 100 => C
++  5 =>  V
 ```
 
-There is no need to be able to convert numbers larger than about 3000.
-(The Romans themselves didn't tend to go any higher)
-
-Wikipedia says: Modern Roman numerals ... are written by expressing each
-digit separately starting with the left most digit and skipping any
-digit with a value of zero.
-
-To see this in practice, consider the example of 1990.
-
-In Roman numerals 1990 is MCMXC:
-
-1000=M
-900=CM
-90=XC
-
-2008 is written as MMVIII:
-
-2000=MM
-8=VIII
-
-See also: http://www.novaroma.org/via_romana/numbers.html
-
-## Exception messages
-
-Sometimes it is necessary to raise an exception. When you do this, you should include a meaningful error message to
-indicate what the source of the error is. This makes your code more readable and helps significantly with debugging. Not
-every exercise will require you to raise an exception, but for those that do, the tests will only pass if you include
-a message.
-
-To raise a message with an exception, just write it as an argument to the exception type. For example, instead of
-`raise Exception`, you should write:
-
-```python
-raise Exception("Meaningful message indicating the source of the error")
+```text
+ 106 => CVI
+---- => --
+ 100 => C
++  5 =>  V
++  1 =>   I
 ```
 
-## Running the tests
+```text
+ 104 => CIV
+---- => ---
+ 100 => C
++  4 =>  IV
+```
 
-To run the tests, run the appropriate command below ([why they are different](https://github.com/pytest-dev/pytest/issues/1629#issue-161422224)):
+And a final more complex example:
 
-- Python 2.7: `py.test roman_numerals_test.py`
-- Python 3.4+: `pytest roman_numerals_test.py`
+```text
+ 1996 => MCMXCVI
+----- => -------
+ 1000 => M
++ 900 =>  CM
++  90 =>    XC
++   5 =>      V
++   1 =>       I
+```
 
-Alternatively, you can tell Python to run the pytest module (allowing the same command to be used regardless of Python version):
-`python -m pytest roman_numerals_test.py`
+## Instructions
 
-### Common `pytest` options
+Your task is to convert a number from Arabic numerals to Roman numerals.
 
-- `-v` : enable verbose output
-- `-x` : stop running tests on first failure
-- `--ff` : run failures from previous test before running other test cases
+For this exercise, we are only concerned about traditional Roman numerals, in which the largest number is MMMCMXCIX (or 3,999).
 
-For other options, see `python -m pytest -h`
+~~~~exercism/note
+There are lots of different ways to convert between Arabic and Roman numerals.
+We recommend taking a naive approach first to familiarise yourself with the concept of Roman numerals and then search for more efficient methods.
 
-## Submitting Exercises
-
-Note that, when trying to submit an exercise, make sure the solution is in the `$EXERCISM_WORKSPACE/python/roman-numerals` directory.
-
-You can find your Exercism workspace by running `exercism debug` and looking for the line that starts with `Workspace`.
-
-For more detailed information about running tests, code style and linting,
-please see [Running the Tests](http://exercism.io/tracks/python/tests).
+Make sure to check out our Deep Dive video at the end to explore the different approaches you can take!
+~~~~
 
 ## Source
 
-The Roman Numeral Kata [http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals](http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals)
+### Contributed to by
 
-## Submitting Incomplete Solutions
+- @behrtam
+- @BethanyG
+- @cmccandless
+- @Dog
+- @dotrungkien
+- @ikhadykin
+- @kytrinyx
+- @lowks
+- @mpatibandla
+- @N-Parsons
+- @pheanex
+- @sjakobi
+- @tqa236
 
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+### Based on
+
+The Roman Numeral Kata - https://codingdojo.org/kata/RomanNumerals/

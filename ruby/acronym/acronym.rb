@@ -7,6 +7,6 @@ To get started with TDD, see the `README.md` file in your
 =end
 class Acronym
     def self.abbreviate(phrase)
-        phrase.split(/\W+/).map {|word| word[0].upcase}.join()
+        phrase.split(/[^A-Za-z0-9']+/).map {|word| word[0].upcase}.join()
     end
 end

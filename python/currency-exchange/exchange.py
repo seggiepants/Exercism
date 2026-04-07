@@ -74,3 +74,13 @@ def non_exchangeable_value(budget, exchange_rate, spread, denomination):
     adj_rate = exchange_rate + ((exchange_rate * spread) / 100)
     bills = int((budget / adj_rate) // denomination)
     return int((budget / adj_rate) - (bills * denomination))
+
+def get_leftover_of_bills(amount, denomination):
+    """
+    Return the leftover amount that cannot be returned from your starting amount given 
+    the denomination of bills. It is very important to know exactly how much the 
+    booth gets to keep.
+    :param amount: The amount to refund
+    :param denomination: The value of a bill
+    """
+    return amount % denomination

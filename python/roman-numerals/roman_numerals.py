@@ -21,14 +21,14 @@ def roman(number):
     Return a given number in Roman numeral format.
     Parameters:
     * number: The number to convert to Roman numeral. This must be an
-    integer value between 1 and 3,000. 
+    integer value between 1 and 3,999. 
     Returns:
     * string, the input number expressed as a Roman Numeral
     Errors:
-    * Will throw an error for numbers zero or less or greater than 3,000
+    * Will throw an error for numbers zero or less or greater than 3,999
     """
     # Throw a value error if we are outside of allowed range.
-    if number > 3000 or number < 1:
+    if number > 3999 or number < 1:
         raise ValueError(f'Number ({number}) is outside the allowed range.')
     
     # Split the digits into a list of digits.
