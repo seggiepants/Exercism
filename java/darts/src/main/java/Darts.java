@@ -1,14 +1,6 @@
 class Darts {
-
-	double x;
-	double y;
-    Darts(double x, double y) {
-    	this.x = x;
-    	this.y = y;
-    }
-
-    int score() {
-    	double distance = Math.sqrt(this.x * this.x + this.y * this.y);
+    int score(double x, double y) {
+    	double distance = Math.sqrt(x * x + y * y);
     	if (distance <= 1.0) {
     		return 10;
     	}
