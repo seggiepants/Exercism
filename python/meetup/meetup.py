@@ -1,3 +1,9 @@
+"""
+Calculate the date for a meetup. You pass in the month, year, week, and
+day of the week, and the get the desired meetup if possible or a 
+MeetupDayException if it cannot be fullfilled.
+"""
+
 from datetime import date, timedelta
 
 # Constants for week day string to number returned by date.weekday()
@@ -55,30 +61,35 @@ def meetup(year, month, week, day_of_week):
         while day.weekday() != day_of_week_map[day_of_week]:
             day += one_day
         return day
-    elif week == 'second' or week == '2nd':
+    
+    if week == 'second' or week == '2nd':
         day = date(year, month, 1) + timedelta(weeks=1)
         while day.weekday() != day_of_week_map[day_of_week]:
             day += one_day
         return day
-    elif week == 'third' or week == '3rd':
+    
+    if week == 'third' or week == '3rd':
         day = date(year, month, 1) + timedelta(weeks=2)
         while day.weekday() != day_of_week_map[day_of_week]:
             day += one_day
         return day
-    elif week == 'fourth' or week == '4th':
+    
+    if week == 'fourth' or week == '4th':
         day = date(year, month, 1) + timedelta(weeks=3)
         while day.weekday() != day_of_week_map[day_of_week]:
             day += one_day
         return day
-    elif week == 'fifth' or week == '5th':
+    
+    if week == 'fifth' or week == '5th':
         day = date(year, month, 1) + timedelta(weeks=4)
         while day.weekday() != day_of_week_map[day_of_week]:
             day += one_day  
         if day.month != month:
-            raise MeetupDayException('Falls outside of month')
-        else:
-            return day
-    elif week == 'last':
+            raise MeetupDayException('That day does not exist.')
+        
+        return day
+    
+    if week == 'last':
         if month == 12:
             day = date(year + 1, 1, 1) - timedelta(days=1)
         else:
@@ -87,13 +98,14 @@ def meetup(year, month, week, day_of_week):
         while day.weekday() != day_of_week_map[day_of_week]:
             day -= one_day
         return day
-    elif week == 'teenth':
+    
+    if week == 'teenth':
         day = date(year, month, 13)
         while day.weekday() != day_of_week_map[day_of_week]:
             day += one_day
         return day
-    else:
-        raise MeetupDayException('week parameter is not an expected value.')
+    
+    raise MeetupDayException('week parameter is not an expected value.')
 
 class MeetupDayException(Exception):
     """
@@ -103,7 +115,7 @@ class MeetupDayException(Exception):
     def __init__(self, message):
         self.message = message
     
-    def getMessage(self):
+    def get_message(self):
         return self.message
     
     def __str__(self):

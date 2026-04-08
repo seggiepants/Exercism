@@ -9,11 +9,23 @@ class Series
     attr_accessor :data
 
     def initialize(input)
-        @data = input
+      if input.length == 0
+        raise ArgumentError.new("Empty series is invalid")
+      end
+      @data = input      
     end
 
     def slices(length)
         ret = []
+        if length == 0
+          raise ArgumentError.new("Slice length cannot be zero")
+        end
+        if length < 0
+          raise ArgumentError.new("Slice length cannot be negative")
+        end
+        if @data.length == 0
+          raise ArgumentError.new("Empty series is invalid")
+        end
         if length > @data.length
             raise ArgumentError.new("Slice too big.")
         end

@@ -8,12 +8,19 @@ def slices(series, length):
     List of subsections in the string.
     """
     result = []
-    if length <= 0:
-        raise ValueError(f'Invalid length supplied. Should be an integer greater than zero, instead recieved {length}')
-    elif len(series) < length:
-        raise ValueError('Cannot get a subsection of that length.')
-    else:
-        for i in range(len(series) - length + 1):
-            result.append(series[i:i + length])
-        
+    if len(series) == 0:
+        raise ValueError('series cannot be empty')
+    
+    if length == 0:
+        raise ValueError('slice length cannot be zero')
+    
+    if length < 0:
+        raise ValueError('slice length cannot be negative')
+    
+    if len(series) < length:
+        raise ValueError('slice length cannot be greater than series length')
+    
+    for i in range(len(series) - length + 1):
+        result.append(series[i:i + length])
+    
     return result
