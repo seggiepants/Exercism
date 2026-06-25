@@ -1,0 +1,4 @@
+*.bat
+*test.php
+*.phar
+*.cache
