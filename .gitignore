@@ -38,3 +38,5 @@ global.d.ts
 *.bat
 *.phar
 .phpunit.result.cache
+perl5/lib
+t/
