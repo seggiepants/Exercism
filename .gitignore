@@ -40,3 +40,7 @@ global.d.ts
 .phpunit.result.cache
 perl5/lib
 t/
+*.yaml
+*.lock
+.dart_tool/
+test/
