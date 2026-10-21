@@ -28,6 +28,10 @@ def init():
     if not is_full():
         if not fill_puzzle([]):
             print('Fill failed')
+        else: 
+            print('Color, Nationality, Drink, Hobby, Pet')
+            for i in range(5): 
+                print(f"{data[i]['color']}, {data[i]['nationality']}, {data[i]['drink']}, {data[i]['hobby']}, {data[i]['pet']}")
     
 def fill_puzzle(undo_stack):
     """
