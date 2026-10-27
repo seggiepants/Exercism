@@ -14,14 +14,15 @@ def gamestate(board):
     winner_x = is_winner(board, 'X')
     winner_o = is_winner(board, 'O')
 
-    if winner_x and winner_o:
+    count_x = sum(1 for row in board for index in range(len(row)) if row[index] == 'X')
+    count_o = sum(1 for row in board for index in range(len(row)) if row[index] == 'O')
+    
+    if (winner_x and winner_o) or (winner_x and count_x == count_o) or (winner_o > 0 and count_x > count_o):
         raise ValueError('Impossible board: game should have ended after the game was won')
     
     if winner_x or winner_o:
         return 'win'
     
-    count_x = sum(1 for row in board for index in range(len(row)) if row[index] == 'X')
-    count_o = sum(1 for row in board for index in range(len(row)) if row[index] == 'O')
     if count_x > count_o + 1:
         raise ValueError('Wrong turn order: X went twice')
 

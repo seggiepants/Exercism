@@ -24,7 +24,7 @@ export const gamestate = (board) => {
   let winO = isWon(board, 'O')
   let boardFull = isFull(board)
 
-  if (winX && winO) 
+  if ((winX && winO) || (winX && xCount == oCount) || (winO > 0 && xCount > oCount))
   {
     throw new Error('Impossible board: game should have ended after the game was won')
   }

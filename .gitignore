@@ -44,3 +44,4 @@ t/
 *.lock
 .dart_tool/
 test/
+*.exe.old
