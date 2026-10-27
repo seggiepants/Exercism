@@ -34,6 +34,9 @@ func BuildSelectQuery(table string, columns []string) string {
 
 // BuildBatchInserts generates a slice of individual SQL INSERT statements for the provided rows.
 // Empty rows are skipped, and values must be enclosed in single quotes.
+// @param string table: The table name for the insert queries
+// @param [][]ColumnValues: The column name and value for each parameter in each insert query.
+// @returns []string: The resulting insert queries. Empty columns with an empty name and/or valueare skipped.
 func BuildBatchInserts(table string, rows [][]ColumnValue) []string {
 	var builder strings.Builder
 	var columns strings.Builder
