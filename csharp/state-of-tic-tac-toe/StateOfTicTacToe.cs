@@ -63,7 +63,18 @@ public class TicTacToe
 
     private bool playedAfterWin(string[] board)
     {
-        return isWin(board, "X") && isWin(board, "O");
+        bool winX = isWin(board, "X");
+        bool winO = isWin(board, "O");
+        if (winX && winO)
+            return true;
+        
+        int countX = (from row in board from ch in row where ch == 'X' select ch).Count();
+        int countO = (from row in board from ch in row where ch == 'O' select ch).Count();
+
+        if ((winX && countX == countO) || (winO && countX > countO)) {
+            return true;
+        }
+        return false;
     }
     
     public State State

@@ -55,7 +55,7 @@ function vlq_decode(array $input): array
         $bit7 = $input[$i] & bit7_high;
         $total = ($total << 7) | $num;
         $bytes++;
-        if ($bytes > 4) {
+        if ($bytes > 8) {
             throw new OverflowException("Too many bytes");
         }
         if ($bit7 == 0) {

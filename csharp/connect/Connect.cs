@@ -114,7 +114,7 @@ public class Connect
                     visited[current.Item2][current.Item1] = true;
 
                     // Check if we won
-                    if (current.Item1 >= board[0].Length - 1 || board[current.Item2][current.Item1 + 2] == ' ')
+                    if (current.Item1 >= board[0].Length - 1 || current.Item1 + 2 >= board[current.Item2].Length || board[current.Item2][current.Item1 + 2] == ' ')
                     {
                         // X made it to right hand side.
                         return ConnectWinner.Black;
